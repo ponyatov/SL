@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cassert>
+#include <map>
+#include <vector>
 using namespace std;
 
 struct Sym {											// 
@@ -11,8 +13,21 @@ struct Sym {											//
 	string value;
 	Sym(string,string);									// <T:V> constructor
 	Sym(string);										// sym:V constructor
+	map<string,Sym*> attr;								// named attr{}ibutes
+	vector<Sym*> nest;									// nest[]ed elements
 	virtual string dump(int depth=0);
+	virtual Sym* eval();
 };
+
+struct Env:Sym { Env(string V); };						// environment
+
+extern Env* env;										// global env
+extern void env_init();
+
+struct Fn:Sym {											// VM function
+	Fn(string V, void(*F)(void) );
+	void(*fn)(void); };
+
 
 extern int yylex();										// lexer get next token
 extern int yylineno;									// current line number

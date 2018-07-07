@@ -7,5 +7,6 @@
 %token <o> SYM
 
 %%
-REPL : | REPL SYM { cout << $2->dump() << endl; }
+REPL : | REPL SYM { cout << $2->eval()->dump() << endl; }
 %%
+
