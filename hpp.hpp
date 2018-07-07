@@ -26,7 +26,9 @@ extern void env_init();
 
 struct Fn:Sym {											// VM function
 	Fn(string V, void(*F)(void) );
-	void(*fn)(void); };
+	void(*fn)(void);
+	Sym* eval();
+};
 
 
 extern int yylex();										// lexer get next token

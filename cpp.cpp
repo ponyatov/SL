@@ -22,3 +22,7 @@ void env_init() {
 	env->attr["?"] = new Fn("dump",dump);
 }
 
+Fn::Fn(string V, void(*F)(void)):Sym("fn",V) { fn = F; }
+
+Sym* Fn:eval() { return fn(); }
+
