@@ -1,0 +1,13 @@
+%{
+#include "hpp.hpp"
+%}
+
+%option noyywrap yylineno
+
+%%
+[\#\\][^\n]*		{ }									// line comment
+
+[a-zA-Z0-9_\?]+		TOC(Sym,SYM)
+
+.					{ yyerror("lexer"); }				// any unlexed char
+
