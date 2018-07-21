@@ -2,12 +2,15 @@
 #include "hpp.hpp"
 %}
 
-%option noyywrap yylineno
+										/* avoid yywrap() function */
+%option noyywrap
+										/* automatically count line number */
+%option yylineno
 
 %%
-[\#\\][^\n]*		{ }									// line comment
+\#[^\n]*			{}						// line comment
 
 [a-zA-Z0-9_\?]+		TOC(Sym,SYM)
 
-.					{ yyerror("lexer"); }				// any unlexed char
-
+[ \t\r\n]+			{}						// drop spaces
+.					{ yyerror("lexer"); }	// syntax error on undetected char

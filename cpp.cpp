@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[]) { env_init(); return yyparse(); }
 
-#define YYERR "\n\n" << yylineno << ':' << msg << " [" << yytext << "]\n\n"
+#define YYERR "\n\n" << yylineno << ": " << msg << " [" << yytext << "]\n\n"
 void yyerror(string msg) { cout << YYERR; cerr << YYERR; exit(-1); }
 
 Sym::Sym(string T, string V) { type = T; value = V; }
@@ -24,5 +24,5 @@ void env_init() {
 
 Fn::Fn(string V, void(*F)(void)):Sym("fn",V) { fn = F; }
 
-Sym* Fn:eval() { return fn(); }
+Sym* Fn::eval() { fn(); return this; }
 
