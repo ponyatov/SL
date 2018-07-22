@@ -7,9 +7,8 @@
                           /* but can process some literal types individually */
 %token <o> SYM					
 
-%%											  /* it's a smell of fried FORTH */
+%%											  
 REPL :
-	 | REPL SYM { Stack->push($2);
-	 			  if (FIND()) EXECUTE();
+	 | REPL SYM { if (FIND($2)) EXECUTE();	  /* it's a smell of fried FORTH */
 	 			  else yyerror(Stack->pop()->value); }
 %%

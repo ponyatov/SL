@@ -21,12 +21,14 @@ struct Sym {										// base symbol class
 	vector<Sym*> nest;								// === nest[]ed elements
 	void push(Sym*);								// push object
 	Sym* pop();										// pop top object
+	void flush();									// clean
 
 	virtual string dump(int depth=0, string prefix=""); // dump in tree form
 	virtual string head(string prefix="");
 	string pad(int N);
 
-	virtual void exec(void);						// execute
+	virtual string str();							// string representation
+	virtual void exec();							// execute
 };
 
 struct Env:Sym { Env(string V); };					// environment
@@ -35,9 +37,9 @@ extern Env* env;									// global env
 extern void init();
 
 struct Fn:Sym {										// VM function
-	Fn(string V, void(*F)(void) );
-	void(*fn)(void);								// pointer to VM fn
-	void exec(void);
+	Fn(string V, void(*F)() );
+	void(*fn)();									// pointer to VM fn
+	void exec();
 };
 
 struct Stack:Sym { Stack(string); };				// stack container
@@ -59,8 +61,8 @@ extern Sym *Stack;									// shared data stack
 
 /// commands
 
-extern bool FIND(void);
-extern void EXECUTE(void);
+extern bool FIND(Sym *name);
+extern void EXECUTE();
 
 #endif // _H_HPP
 
