@@ -1,5 +1,10 @@
 .PHONY: all
-all: log.log
+all: ./WtApp.exe
+	./WtApp.exe
+#log.log
+
+./WtApp.exe: WtApp.cpp
+	$(CXX) -o $@ $<
 
 log.log: src.src ./exe.exe
 	./exe.exe < $< > $@ && tail $(TAIL) $@

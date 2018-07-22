@@ -50,7 +50,7 @@ struct Map:Sym { Map(string); };					// associative container
 extern int yylex();									// lexer get next token
 extern int yylineno;								// current line number
 extern char* yytext;								// current lexeme value
-#define TOC(C,T) { yylval.o = new C(yytext); return T; }/* token macro */
+#define TOC(C,T) { yylval.o = new C(yytext); return T; } /* token macro */
 extern int yyparse();								// parser
 extern void yyerror(string);						// syntax error callback
 #include "ypp.tab.hpp"								// token definitions
