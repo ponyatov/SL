@@ -2,10 +2,14 @@
 #include "hpp.hpp"
 %}
 
-%defines %union { Sym* o; }
+%defines %union { Sym* o; }            /* we work only with Symbolic objects */
 
-%token <o> SYM
+                          /* but can process some literal types individually */
+%token <o> SYM					
 
-%%
-REPL : | REPL SYM { cout << $2->eval()->dump() << endl; }
+%%											  /* it's a smell of fried FORTH */
+REPL :
+	 | REPL SYM { Stack->push($2);
+	 			  if (FIND()) EXECUTE();
+	 			  else yyerror(Stack->pop()->value); }
 %%
