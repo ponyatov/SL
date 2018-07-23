@@ -33,6 +33,8 @@ fi
 
 AC_ARG_ENABLE(wx, wxWidgets)
 
+AC_CONFIG_SRCDIR([src/wx.cpp])
+
 WX_CXXFLAGS=$($WX_CONFIG --cxxflags)
 AC_SUBST([WX_CXXFLAGS])
 AM_CXXFLAGS="$AM_CXXFLAGS -DWX \${WX_CXXFLAGS}"
