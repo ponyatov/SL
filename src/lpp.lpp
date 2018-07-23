@@ -1,5 +1,5 @@
 %{
-#include "ScriptLayer.hpp"
+#include "hpp.hpp"
 %}
 										/* avoid yywrap() function */
 %option noyywrap

@@ -1,6 +1,5 @@
 AC_INIT([SL], [0.0.1-prealpha], [https://github.com/ponyatov/SL/tree/dev])
-AM_INIT_AUTOMAKE([foreign])
-# -Wall -Werror 
+AM_INIT_AUTOMAKE([foreign]) 
 
 AC_PROG_CXX
 AC_PROG_LEX
@@ -20,7 +19,7 @@ AC_SUBST([AM_LDFLAGS])
 AC_CONFIG_FILES([ Makefile src/Makefile ])
 AC_CONFIG_HEADERS([config.h])
 
-AC_CONFIG_SRCDIR([src/ObjectEngine.cpp])
+AC_CONFIG_SRCDIR([src/cpp.cpp])
 
 #AC_DEFINE([Msz], [0x1000], [VM memory size])
 
@@ -36,10 +35,10 @@ AC_ARG_ENABLE(wx, wxWidgets)
 
 WX_CXXFLAGS=$($WX_CONFIG --cxxflags core)
 AC_SUBST([WX_CXXFLAGS])
-#AM_CXXFLAGS="$AM_CXXFLAGS \${WX_CXXFLAGS}"
+AM_CXXFLAGS="$AM_CXXFLAGS \${WX_CXXFLAGS}"
 
 WX_LIBS=$($WX_CONFIG --libs core)
 AC_SUBST([WX_LIBS])
-#LIBS="$LIBS \${WX_LIBS}"
+LIBS="$LIBS \${WX_LIBS}"
 
 AC_OUTPUT

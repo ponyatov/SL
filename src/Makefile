@@ -4,16 +4,19 @@ all: log.log
 log.log: src.src ./exe.exe
 	./exe.exe < $< > $@ && tail $(TAIL) $@
 
-C = cpp.cpp ypp.tab.cpp lex.yy.c
+C = cpp.cpp ypp.tab.cpp lex.yy.cpp
 H = hpp.hpp ypp.tab.hpp
+
+L = $(shell wx-config --libs core)
 
 CXXFLAGS += -std=gnu++11
 
-./exe.exe: $(C) $(H)
+./exe.exe: $(C) $(H) Makefile
 	$(CXX) $(CXXFLAGS) -o $@ $(C) $(L)
 
+ypp.tab.hpp: ypp.tab.cpp
 ypp.tab.cpp: ypp.ypp
-	bison $<
+	bison -o $@ $<
 
-lex.yy.c: lpp.lpp
-	flex $<
+lex.yy.cpp: lpp.lpp
+	flex -o $@ $<

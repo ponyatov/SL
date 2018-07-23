@@ -1,6 +1,6 @@
 .PHONY: all
 all: ./configure
-	rm -rf build ; mkdir build ; cd build ; ../configure && make
+	rm -rf build ; mkdir build ; cd build ; ../configure && make -j4
 	
 ./configure: configure.ac Makefile.am src/Makefile.am Makefile
 	autoreconf --install

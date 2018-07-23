@@ -9,6 +9,10 @@
 #include <vector>
 using namespace std;
 
+#ifdef __WXGTK__
+#include <wx/wx.h>
+#endif
+
 struct Sym {										// base symbol class
 	string type;									// type tag
 	string value;									// single value
@@ -53,7 +57,7 @@ extern char* yytext;								// current lexeme value
 #define TOC(C,T) { yylval.o = new C(yytext); return T; } /* token macro */
 extern int yyparse();								// parser
 extern void yyerror(string);						// syntax error callback
-#include "Parser.hpp"								// token definitions
+#include "ypp.tab.hpp"								// token definitions
 
 /// Object Virtual Machine
 

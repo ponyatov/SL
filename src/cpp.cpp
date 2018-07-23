@@ -1,4 +1,4 @@
-#include "ScriptLayer.hpp"
+#include "hpp.hpp"
 
 // very simple system start: just run interpreter
 int main(int argc, char *argv[]) { init(); return yyparse(); }

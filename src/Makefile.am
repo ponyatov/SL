@@ -1,9 +1,9 @@
 bin_PROGRAMS = ScriptLayer
-BUILT_SOURCES = Parser.cpp Lexer.cpp
-ScriptLayer_SOURCES = ObjectEngine.cpp ${BUILT_SOURCES}
+BUILT_SOURCES = ypp.tab.cpp lex.yy.cpp
+ScriptLayer_SOURCES = cpp.cpp ${BUILT_SOURCES}
 
-Parser.hpp: Parser.cpp 
-Parser.cpp: Parser.yacc
+ypp.tab.hpp: ypp.tab.cpp 
+ypp.tab.cpp: ypp.ypp
 	${BISON} -o $@ $<
-Lexer.cpp: Lexer.lex
+lex.yy.cpp: lpp.lpp
 	${FLEX} -o $@ $<
