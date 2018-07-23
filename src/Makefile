@@ -9,6 +9,8 @@ H = hpp.hpp ypp.tab.hpp
 
 CXXFLAGS += -DWX $(shell wx-config --cxxflags)
 L += $(shell wx-config --libs core)
+C += wx.cpp
+H += wx.hpp
 
 CXXFLAGS += -std=gnu++11
 

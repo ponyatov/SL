@@ -9,11 +9,6 @@
 #include <vector>
 using namespace std;
 
-#ifdef WX
-#include <wx/wx.h>
-class wxScriptLayer: public wxApp { public: virtual bool OnInit(); };
-#endif
-
 struct Sym {										// base symbol class
 	string type;									// type tag
 	string value;									// single value

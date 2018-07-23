@@ -1,13 +1,6 @@
 #include "hpp.hpp"
 
-#ifdef WX
-	IMPLEMENT_APP(wxScriptLayer);
-	bool wxScriptLayer::OnInit() {
-		auto winMain = new wxFrame(NULL,wxID_ANY,"ScriptLayer");
-		winMain->Show(true);
-		return true;
-	}
-#else
+#ifndef WX
 	// very simple system start: just run interpreter
 	int main(int argc, char *argv[]) { init(); return yyparse(); }
 #endif
