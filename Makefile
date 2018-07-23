@@ -1,12 +1,11 @@
 .PHONY: all
 all: ./configure
-	rm -rf build ; mkdir build ; cd build ; ../configure
+	rm -rf build ; mkdir build ; cd build ; ../configure ; make
 	
-./configure: configure.ac Makefile.am src/Makefile.am
+./configure: configure.ac Makefile.am src/Makefile.am Makefile
 	autoreconf --install
-#	autoconf
 
 .PHONY: clean
 clean:
-	rm -rf build 
+	rm -rf build configure aclocal.m4 *.in missing depcomp compile install-sh
 	

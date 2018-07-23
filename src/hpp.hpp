@@ -9,8 +9,6 @@
 #include <vector>
 using namespace std;
 
-#include <wx/wx.h>
-
 struct Sym {										// base symbol class
 	string type;									// type tag
 	string value;									// single value
