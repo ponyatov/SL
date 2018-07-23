@@ -11,6 +11,8 @@ public:
 	slEditor(const wxString& title);
 	void OnQuit(wxCommandEvent& WXUNUSED(event));
 	void OnAbout(wxCommandEvent& WXUNUSED(event));
+	void OnStack(wxCommandEvent& WXUNUSED(event));
+	void OnVoc(wxCommandEvent& WXUNUSED(event));
 
 };
 
