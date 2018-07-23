@@ -6,3 +6,4 @@ ypp.tab.?pp
 lex.yy.c
 
 .settings/language.settings.xml
+autom4te.cache/
