@@ -9,6 +9,10 @@
 #include <vector>
 using namespace std;
 
+#define TITLE  "ScriptLayer engine"
+#define AUTHOR "Dmitry Ponyatov <dponyatov@gmail.com>"
+#define GITHUB "https://github.com/ponyatov/SL"
+
 struct Sym {										// base symbol class
 	string type;									// type tag
 	string value;									// single value

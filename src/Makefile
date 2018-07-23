@@ -1,5 +1,6 @@
 .PHONY: all
-all: log.log
+all: ./exe.exe
+	./exe.exe
 
 log.log: src.src ./exe.exe
 	./exe.exe < $< > $@ && tail $(TAIL) $@
