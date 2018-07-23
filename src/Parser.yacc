@@ -1,5 +1,5 @@
 %{
-#include "hpp.hpp"
+#include "ScriptLayer.hpp"
 %}
 
 %defines %union { Sym* o; }            /* we work only with Symbolic objects */

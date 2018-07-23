@@ -1,5 +1,9 @@
-bin_PROGRAMS = sl
-sl_SOURCES = cpp.cpp ypp.tab.cpp yy.lex.c
+bin_PROGRAMS = ScriptLayer
+BUILT_SOURCES = Parser.cpp Lexer.cpp
+ScriptLayer_SOURCES = ObjectEngine.cpp ${BUILT_SOURCES}
 
-#ypp.tab.cpp ypp.tab.hpp: ypp.ypp
-#	bison $<
+Parser.hpp: Parser.cpp 
+Parser.cpp: Parser.yacc
+	${BISON} -o $@ $<
+Lexer.cpp: Lexer.lex
+	${FLEX} -o $@ $<

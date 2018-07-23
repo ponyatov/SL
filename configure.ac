@@ -7,11 +7,20 @@ AC_PROG_LEX
 AC_PROG_YACC
 
 AC_LANG([C++])
+#AC_CHECK_HEADERS([iostream])
+#AC_CHECK_HEADERS([sstream])
+#AC_CHECK_HEADERS([vector])
+#AC_CHECK_HEADERS([map])
+
+# user custom flags
+AC_SUBST([AM_CXXFLAGS])
+#, "-pipe -march=native -Ofast")
+AC_SUBST([AM_LDFLAGS])
 
 AC_CONFIG_FILES([ Makefile src/Makefile ])
 AC_CONFIG_HEADERS([config.h])
 
-AC_CONFIG_SRCDIR([src/cpp.cpp])
+AC_CONFIG_SRCDIR([src/ObjectEngine.cpp])
 
 #AC_DEFINE([Msz], [0x1000], [VM memory size])
 
@@ -24,9 +33,13 @@ if test x$WX_CONFIG == x; then
 fi
 
 AC_ARG_ENABLE(wx, wxWidgets)
+
 WX_CXXFLAGS=$($WX_CONFIG --cxxflags core)
 AC_SUBST([WX_CXXFLAGS])
+#AM_CXXFLAGS="$AM_CXXFLAGS \${WX_CXXFLAGS}"
+
 WX_LIBS=$($WX_CONFIG --libs core)
 AC_SUBST([WX_LIBS])
+#LIBS="$LIBS \${WX_LIBS}"
 
 AC_OUTPUT
