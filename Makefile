@@ -7,5 +7,6 @@ all: ./configure
 
 .PHONY: clean
 clean:
-	rm -rf build configure aclocal.m4 *.in missing depcomp compile install-sh
+	rm -rf build autom4te.cache \
+		configure aclocal.m4 *.in missing depcomp compile install-sh
 	

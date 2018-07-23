@@ -9,8 +9,9 @@
 #include <vector>
 using namespace std;
 
-#ifdef __WXGTK__
+#ifdef WX
 #include <wx/wx.h>
+class wxScriptLayer: public wxApp { public: virtual bool OnInit(); };
 #endif
 
 struct Sym {										// base symbol class

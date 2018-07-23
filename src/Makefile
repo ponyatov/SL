@@ -7,7 +7,8 @@ log.log: src.src ./exe.exe
 C = cpp.cpp ypp.tab.cpp lex.yy.cpp
 H = hpp.hpp ypp.tab.hpp
 
-L = $(shell wx-config --libs core)
+CXXFLAGS += -DWX $(shell wx-config --cxxflags)
+L += $(shell wx-config --libs core)
 
 CXXFLAGS += -std=gnu++11
 

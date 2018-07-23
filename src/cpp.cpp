@@ -1,7 +1,16 @@
 #include "hpp.hpp"
 
-// very simple system start: just run interpreter
-int main(int argc, char *argv[]) { init(); return yyparse(); }
+#ifdef WX
+	IMPLEMENT_APP(wxScriptLayer);
+	bool wxScriptLayer::OnInit() {
+		auto winMain = new wxFrame(NULL,wxID_ANY,"ScriptLayer");
+		winMain->Show(true);
+		return true;
+	}
+#else
+	// very simple system start: just run interpreter
+	int main(int argc, char *argv[]) { init(); return yyparse(); }
+#endif
 
 /// syntax error template
 #define YYERR "\n\n" << yylineno << ": " << msg << " [" << yytext << "]\n\n"
