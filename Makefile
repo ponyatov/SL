@@ -1,10 +1,10 @@
 .PHONY: all
 all: ./configure
-#	rm -rf build ; mkdir build ; cd build ; ../configure
-	autoreconf --install
+	rm -rf build ; mkdir build ; cd build ; ../configure
 	
 ./configure: configure.ac Makefile.am src/Makefile.am
-	autoconf
+	autoreconf --install
+#	autoconf
 
 .PHONY: clean
 clean:
