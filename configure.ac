@@ -16,7 +16,15 @@ AC_CONFIG_SRCDIR([src/cpp.cpp])
 AC_CHECK_PROGS(FLEX, [flex --version])
 AC_CHECK_PROGS(BISON, [bison --version])
 
-AC_ARG_ENABLE(wx, wxWidgets)
+AC_CHECK_PROG(HAVE_WX_CONFIG, wx-config, yes, no)
+if test x$HAVE_WX_CONFIG == xno; then
+	AC_MSG_ERROR([no wxWidgets])
+fi
+if test x$HAVE_WX_CONFIG == xyes; then
+	AC_ARG_ENABLE(wx, wxWidgets)
+fi
+
+#PKG_CHECK_MODULES(WX, [wx])
 #AC_CHECK_HEADER([wx/wx.h])
 
 AC_OUTPUT
