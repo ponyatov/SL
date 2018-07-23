@@ -9,7 +9,7 @@ slEditor*    wnVoc = NULL;
 bool slApplication::OnInit() {
 	wnEditor = new slEditor("ScriptLayer:Editor");
 	wnEditor->Show(true);
-	wnStack = new slEditor("ScriptLayer:Stack");
+	wnStack = new slStack("ScriptLayer:Stack");
 //	wnStack->Show(true);
 	wnVoc = new slEditor("ScriptLayer:Vocabulary");
 //	wnVoc->Show(true);
@@ -18,8 +18,7 @@ bool slApplication::OnInit() {
 
 slEditor::slEditor(const wxString& title): wxFrame(NULL, wxID_ANY, title) {
 
-	auto menubar = new wxMenuBar;
-	SetMenuBar(menubar);
+	menubar = new wxMenuBar; SetMenuBar(menubar);
 
 	auto file = new wxMenu;
 	menubar->Append(file,"&File");
@@ -52,11 +51,18 @@ slEditor::slEditor(const wxString& title): wxFrame(NULL, wxID_ANY, title) {
 	Connect(wxID_ABOUT, wxEVT_COMMAND_MENU_SELECTED,
 	      wxCommandEventHandler(slEditor::OnAbout));
 
-	auto editor = new wxTextCtrl(this,wxID_ANY,"# comment",\
-			wxDefaultPosition,wxDefaultSize,\
-				wxTE_MULTILINE);
+	editor = new wxStyledTextCtrl(this,wxID_ANY); refresh();
 
+}
 
+void slEditor::refresh() {
+	editor->SetValue("# comment");
+}
+
+slStack::slStack(const wxString& title): slEditor(title) {}
+
+void slStack::refresh() {
+	editor->SetValue(Stack->dump());
 }
 
 void slEditor::OnQuit(wxCommandEvent& WXUNUSED(event)) {

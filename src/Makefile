@@ -9,7 +9,7 @@ C = cpp.cpp ypp.tab.cpp lex.yy.cpp
 H = hpp.hpp ypp.tab.hpp
 
 CXXFLAGS += -DWX $(shell wx-config --cxxflags)
-L += $(shell wx-config --libs core)
+L += $(shell wx-config --libs core stc)
 C += wx.cpp
 H += wx.hpp
 
