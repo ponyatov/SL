@@ -1,6 +1,5 @@
 AC_INIT([SL], [0.0.1-prealpha], [https://github.com/ponyatov/SL/tree/dev])
-#AM_INIT_AUTOMAKE([-Wall -Werror foreign])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 AC_PROG_LEX
 AC_PROG_YACC

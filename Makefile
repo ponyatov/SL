@@ -1,6 +1,7 @@
 .PHONY: all
 all: ./configure
-	mkdir build ; cd build ; ./configure
+#	rm -rf build ; mkdir build ; cd build ; ../configure
+	autoreconf --install
 	
 ./configure: configure.in Makefile.am src/Makefile.am
 	autoconf
